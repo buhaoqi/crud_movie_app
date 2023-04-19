@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto my-5 ">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <h3>电影查询</h3>
+            <form action="/movie/search" method="get">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="juqing">
+                    <label class="form-check-label" for="juqing">
+                        剧情
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="aiqing">
+                    <label class="form-check-label" for="aiqing">
+                        爱情
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="kongbu">
+                    <label class="form-check-label" for="kongbu">
+                        恐怖
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="kehuan">
+                    <label class="form-check-label" for="kehuan">
+                        科幻
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="qiangzhan">
+                    <label class="form-check-label" for="qiangzhan">
+                        枪战
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="lizhi">
+                    <label class="form-check-label" for="lizhi">
+                        励志
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="xiju">
+                    <label class="form-check-label" for="xiju">
+                        喜剧
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dongzuo">
+                    <label class="form-check-label" for="dongzuo">
+                        动作
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="col-10 d-flex flex-wrap gap-4">
+            <% data.forEach(movie => { %>
+                <div class="card" style="flex-basis:30%;">
+                    <img src="/images/upload/<%= movie.cover %>" class="card-img-top" alt="<%= movie.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= movie.title %></h5>
+                        <p class="card-text">评分: <%= movie.rate %> </p>
+                        <p class="card-text">星星: <%= movie.star %> </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">导演: <%= movie.directors %></li>
+                        <li class="list-group-item">演员: <%= movie.casts %></li>
+                        <li class="list-group-item">风格:<%= movie.genre %> </li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="<%= movie.url %>" class="card-link">详情</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

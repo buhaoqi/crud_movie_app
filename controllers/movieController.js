@@ -3,10 +3,10 @@ const Movie = require('../models/movieModel')
 const movie_index = async(req,res) => {
     try{
         //获取数据
-        const data = await Movie.find().limit(5)
+        const data = await Movie.find().limit(9)
         //把数据注入到视图
-        res.json(data)
-        
+        // res.json(data)
+        res.render('index',{data})
     } catch(err){
         console.log(err)
     }
