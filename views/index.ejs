@@ -91,14 +91,27 @@
         <div class="col-6 d-flex justify-content-end ">
           <nav class="d-flex align-items-center">
             <ul class="pagination ">
+            <!-- 首页 -->
               <li class="page-item <%= page == 1 ?  "disabled" : "" %>">
-                <a class="page-link" href="/movie?page=<%=page - 1%>&limit=<%=limit%>">上一页</a>
+                <!-- page:当前页码 -->
+                <a class="page-link" href="/movie?page=1&limit=<%=limit%>">首页</a>
               </li>
-              <% for( let i = 1; i <= totalPage; i++ ) { %>
+
+              <% let i = page*1 > 5 ? page*1 - 4 : 1 %>
+
+              <% if(i !== 1){ %>
+                <li class="page-item disabled"><a class="page-link">...</a></li>
+              <% } %>
+
+            <!-- 中间页码 -->
+            
+              <% for( i = page; i <= page*1 + 4; i++ ) { %>
                 <li class="page-item <%= i==page ? 'active' : ""  %>"><a class="page-link" href="/movie?page=<%=i%>&limit=<%=limit%>"><%=i%></a></li>
               <% } %>
+
+            <!-- 尾页 -->
               <li class="page-item <%= page*1 == totalPage ?  "disabled" : "" %>">
-                <a class="page-link" href="/movie?page=<%=page*1 + 1%>&limit=<%=limit%>">下一页</a>
+                <a class="page-link" href="/movie?page=<%= totalPage %>&limit=<%=limit%>">尾页</a>
               </li>
             </ul>
           </nav>

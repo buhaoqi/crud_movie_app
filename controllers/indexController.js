@@ -2,7 +2,7 @@ const Movie = require('../models/movieModel')
 
 const app_index = async(req,res) => {
     try{
-        const {page = 1, limit = 5,search = ''} = req.query
+        const {page = 1, limit = 6,search = ''} = req.query
         //获取数据
         const data = await Movie.find({title:{$regex:search}})
                                 .limit(limit*1)
