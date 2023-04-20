@@ -85,3 +85,23 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class=" row">
+        <div class="col-6 d-flex align-items-center">共<%= count %>条</div>
+        <div class="col-6 d-flex justify-content-end ">
+          <nav class="d-flex align-items-center">
+            <ul class="pagination ">
+              <li class="page-item <%= page == 1 ?  "disabled" : "" %>">
+                <a class="page-link" href="/movie?page=<%=page - 1%>&limit=<%=limit%>">上一页</a>
+              </li>
+              <% for( let i = 1; i <= totalPage; i++ ) { %>
+                <li class="page-item <%= i==page ? 'active' : ""  %>"><a class="page-link" href="/movie?page=<%=i%>&limit=<%=limit%>"><%=i%></a></li>
+              <% } %>
+              <li class="page-item <%= page*1 == totalPage ?  "disabled" : "" %>">
+                <a class="page-link" href="/movie?page=<%=page*1 + 1%>&limit=<%=limit%>">下一页</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+    </div>
+</div>

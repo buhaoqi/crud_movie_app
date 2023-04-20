@@ -6,7 +6,8 @@ const express = require('express')
 const ejs = require('ejs')
 const expressLayouts = require('express-ejs-layouts')
 //导入本地模块
-const movieRoutes = require('./routes/movieRoutes')
+const indexRoutes = require('./routes/indexRoutes')
+// const movieRoutes = require('./routes/movieRoutes')
 const dbConnect = require('./config/dbConnect')
 
 //实例化APP
@@ -21,8 +22,10 @@ app.use(expressLayouts)
 app.use(express.static(path.join(__dirname,'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
 //首页get路由
-app.use('/',movieRoutes)
+app.use('/',indexRoutes)
+// app.use('/movie',movieRoutes)
 
 //监听端口3000
 const PORT = 3000
